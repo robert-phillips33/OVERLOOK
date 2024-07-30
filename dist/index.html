@@ -1,16 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>OVERLOOK</title>
 </head>
-<body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
-  <script src="bundle.js"></script>
 
+<body>
+  <div class="login-container" style="display: none;">
+    <h1>OVERLOOK.</h1>
+    <form id="login-form" aria-labelledby="login-form-heading">
+      <label for="username">Username</label>
+      <input type="text" class="login-input" id="username-input" name="username" placeholder="Username"
+        aria-required="true">
+      <label for="password">Password</label>
+      <input type="password" class="login-input" id="password-input" aria-required="true" name="password"
+        placeholder="Password" aria-required="true">
+      <button id="submit-login-forms-button" type="submit">Login</button>
+    </form>
+  </div>
+
+  <main id="main-app">
+    <header>
+      <h1>WELCOME TO OVERLOOK HOTEL.</h1>
+    </header>
+
+    <section class="booking-section">
+      <form class="booking-column" id="make-new-booking-column">
+        <h2>MAKE A NEW BOOKING.</h2>
+        <nav id="make-new-booking-nav">
+          <input type="date" id="calendar-input" class="booking-input" aria-required="true" required>
+          <select id="room-tags" id="new-booking-tags" class="booking-input" aria-required="true">
+            <option>Tag 1</option>
+            <option>Tag 2</option>
+            <option>Tag 3</option>
+            <option>Tag 4</option>
+            <option>Tag 5</option>
+          </select>
+          <button id="search-bookings-button" type="submit" class="booking-button">SEARCH</button>
+        </nav>
+        <div class="booking-wrapper" id="make-new-booking-wrapper">
+          <!-- AVAILABLE ROOMS COULD GENERATE HERE(?) -->
+        </div>
+      </form>
+
+      <form class="booking-column" id="saved-bookings-column">
+        <h2>VIEW YOUR BOOKINGS.</h2>
+        <p>[ YOU HAVE SPENT A TOTAL OF $225.75 ON YOUR BOOKINGS ]</p>
+        <nav id="view-your-bookings-nav">
+          <button id="view-passed-bookings-button" class="booking-button">VIEW PAST BOOKINGS</button>
+          <button id="view-upcoming-bookings-button" class="booking-button">VIEW UPCOMING BOOKINGS</button>
+        </nav>
+        <div class="booking-wrapper" id="saved-bookings-wrapper">
+          <!-- USERS BOOKINGS COULD GENERATE HERE? -->
+        </div>
+      </form>
+    </section>
+  </main>
+  <script src="bundle.js"></script>
 </body>
+
 </html>
