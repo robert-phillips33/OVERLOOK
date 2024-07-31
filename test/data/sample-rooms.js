@@ -1,3 +1,4 @@
+
 let rooms = [
   {
     number: 1,
