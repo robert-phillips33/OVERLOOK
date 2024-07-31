@@ -1,7 +1,6 @@
 
-export const getCustomerBookings = (bookings, customerId) => {
-  console.log('Bookings inside getCustomerBookings:', bookings);
-  const customerBookings = bookings.filter((booking) => {
+export const getCustomerBookings = (allBookings, customerId) => {
+  const customerBookings = allBookings.filter((booking) => {
     return booking.userID === customerId;
   });
   return customerBookings;

@@ -2,10 +2,9 @@
 const { expect } = require('chai');
 
 const {
+  
   getCustomerBookings,
-  // getSumOfAllBookings,
-  // getAvailableRooms,
-  // filterRoomsByType
+
 } = require('../src/main.js');
 
 const bookings = require('./data/sample-bookings.js');
