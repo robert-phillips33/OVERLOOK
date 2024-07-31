@@ -1,4 +1,4 @@
-let bookings = [
+export const bookings = [
   {
     id: "5fwrgu4i7k55hl6sz",
     userID: 9,
@@ -61,4 +61,3 @@ let bookings = [
   }
 ];
 
-export default bookings

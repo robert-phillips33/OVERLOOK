@@ -1,4 +1,4 @@
-let customers = [
+export const customers = [
   {
     id: 1,
     name: "Leatha Ullrich"

@@ -1,26 +1,16 @@
 
-export const bookRoom = (userID, roomNumber, date) => {
-
-  const bookingObj = {
-    userID,
-    roomNumber,
-    date,
-  };
-  return bookingObj;
-};
-
-export const getCustomerBookings = (bookings, customerID) => {
-
+export const getCustomerBookings = (bookings, customerId) => {
+  console.log('Bookings inside getCustomerBookings:', bookings);
   const customerBookings = bookings.filter((booking) => {
-    return booking.customerId === customerID;
+    return booking.userID === customerId;
   });
   return customerBookings;
 };
 
-export const getSumOfAllBookings = (bookings, rooms, customerID) => {
+export const getSumOfAllBookings = (bookings, rooms, customerId) => {
   
   const customerBookings = bookings.filter(booking =>
-    booking.customerId === customerID);
+    booking.customerId === customerId);
 
   let totalPrice = 0;
   customerBookings.forEach(booking => {
