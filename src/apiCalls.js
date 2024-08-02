@@ -3,8 +3,8 @@ export let roomsAPI = [];
 export let bookingsAPI = [];
 export let newBooking;
 
-export const fetchCustomerData = () => {
-  return fetch('http://localhost:3001/api/v1/customers')
+export const fetchCustomerData = (customerId) => {
+  return fetch(`http://localhost:3001/api/v1/customers/${customerId}`)
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -69,12 +69,3 @@ export const postBookingData = (bookingData) => {
     .catch(error => console.error('Error posting booking:', error));
 };
 
-export const initializeApp = () => {
-  Promise.all([fetchCustomerData(), fetchRoomData(), fetchBookingData()])
-    .then(() => {
-      console.log('Customers:', customersAPI);
-      console.log('Rooms:', roomsAPI);
-      console.log('Bookings:', bookingsAPI);
-    })
-    .catch(error => console.error('Error initializing app:', error));
-};
