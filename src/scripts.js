@@ -1,11 +1,44 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
 
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './css/styles.css';
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
+const {
+
+  initializeApp,
+  // fetchCustomerData,
+  // fetchRoomData,
+  // fetchBookingData,
+  // postBookingData,
+  // customersAPI,
+  // roomsAPI,
+  // bookingsAPI,
+
+} = require('../src/apiCalls.js');
+
+// EVENT LISTENERS //
+document.addEventListener('DOMContentLoaded', initializeApp);
+// <------------> //
 
 
-console.log('This is the JavaScript entry file - your code begins here.');
+// QUERY SELECTORS - BUTTONS //
+const loginBtn = document.getElementById('submit-login-forms-button');
+const searchBookingsBtn = document.getElementById('search-bookings-button');
+const pastBookingsBtn = document.getElementById('past-bookings-button');
+const upcomingBookingsBtn = document.getElementById('upcoming-bookings-button');
+// <-----------------------> //
+
+// QUERY SELECTORS - FORMS //
+const mainSection = document.querySelector('.booking-section');
+const loginSection = document.querySelector('.login-container');
+const mainHeader = document.getElementById('main-header');
+// <---------------------> //
+
+
+export const showMainPage = (e) => {
+  e.preventDefault();
+  loginSection.style.display = 'none';
+  mainSection.style.display = 'flex';
+  mainHeader.style.display = 'flex';
+  console.log('heeeeeeeeeeeeeeeeeeeello')
+};
+loginBtn.addEventListener('click', showMainPage);
+
