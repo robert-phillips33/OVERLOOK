@@ -9,25 +9,25 @@
 </head>
 
 <body>
-  <div class="login-container" style="display: none;">
-    <h1>OVERLOOK.</h1>
+  <div class="login-container" style="display: all;">
+    <h1 class="login-h1" >OVERLOOK.</h1>
     <form id="login-form" aria-labelledby="login-form-heading">
       <label for="username">Username</label>
-      <input type="text" class="login-input" id="username-input" name="username" placeholder="Username"
-        aria-required="true">
+      <input type="text" class="login-input" id="username-input" name="username" placeholder="Username" 
+      autocomplete="current-username" aria-required="true">
       <label for="password">Password</label>
       <input type="password" class="login-input" id="password-input" aria-required="true" name="password"
-        placeholder="Password" aria-required="true">
+        placeholder="Password" autocomplete="current-password" aria-required="true">
       <button id="submit-login-forms-button" type="submit">Login</button>
+      <p id="error-message" style="color: red;"></p>
     </form>
   </div>
 
   <main id="main-app">
-    <header>
+    <header id="main-header" style="display: none"> 
       <h1>WELCOME TO OVERLOOK HOTEL.</h1>
     </header>
-
-    <section class="booking-section">
+    <section class="booking-section" style ="display: none;">
       <form class="booking-column" id="make-new-booking-column">
         <h2>MAKE A NEW BOOKING.</h2>
         <nav id="make-new-booking-nav">
@@ -48,10 +48,10 @@
 
       <form class="booking-column" id="saved-bookings-column">
         <h2>VIEW YOUR BOOKINGS.</h2>
-        <p>[ YOU HAVE SPENT A TOTAL OF $225.75 ON YOUR BOOKINGS ]</p>
+        <p id="total-spent">[ YOU HAVE SPENT A TOTAL OF $225.75 ON YOUR BOOKINGS ]</p>
         <nav id="view-your-bookings-nav">
-          <button id="view-passed-bookings-button" class="booking-button">VIEW PAST BOOKINGS</button>
-          <button id="view-upcoming-bookings-button" class="booking-button">VIEW UPCOMING BOOKINGS</button>
+          <button id="past-bookings-button" class="booking-button">VIEW PAST BOOKINGS</button>
+          <button id="upcoming-bookings-button" class="booking-button">VIEW UPCOMING BOOKINGS</button>
         </nav>
         <div class="booking-wrapper" id="saved-bookings-wrapper">
           <!-- USERS BOOKINGS COULD GENERATE HERE? -->
