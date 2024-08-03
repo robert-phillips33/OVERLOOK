@@ -3,11 +3,11 @@ export let roomsAPI = [];
 export let bookingsAPI = [];
 export let newBooking;
 
-export const fetchCustomerData = (customerId) => {
-  return fetch(`http://localhost:3001/api/v1/customers/${customerId}`)
+export const fetchCustomerData = () => {
+  return fetch(`http://localhost:3001/api/v1/customers/10`)
     .then(response => {
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error('Network response failed.');
       }
       return response.json();
     })
@@ -22,7 +22,7 @@ export const fetchRoomData = () => {
   return fetch('http://localhost:3001/api/v1/rooms')
     .then(response => {
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error('Network response failed.');
       }
       return response.json();
     })
@@ -37,7 +37,7 @@ export const fetchBookingData = () => {
   return fetch('http://localhost:3001/api/v1/bookings')
     .then(response => {
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error('Network response failed.');
       }
       return response.json();
     })
@@ -58,7 +58,7 @@ export const postBookingData = (bookingData) => {
   })
     .then(response => {
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error('Network response failed.');
       }
       return response.json();
     })

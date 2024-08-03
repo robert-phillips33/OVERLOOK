@@ -1,20 +1,21 @@
-
 import './css/styles.css';
 
-const { fetchCustomerData, fetchRoomData, fetchBookingData, postBookingData, 
+const { fetchCustomerData, fetchRoomData, fetchBookingData, postBookingData,
   customersAPI, roomsAPI, bookingsAPI } = require('../src/apiCalls.js');
 
-const { getCustomerBookings, getAvailableRooms, getSumOfAllBookings, 
+const { getCustomerBookings, getAvailableRooms, getSumOfAllBookings,
   filterRoomsByType } = require('../src/main.js');
 
-// <--------------------> EVENT LISTENERS <--------------------> //
+// <--------------------> EVENT LISTENERS <----------------------> //
 document.addEventListener('DOMContentLoaded', () => {
   fetchRoomData();
   fetchBookingData();
 });
 
-// <--------------------> GLOBALS <--------------------> //
-let customerId;
+// <----------------------------> GLOBALS <----------------------------> //
+let allBookings = [];
+let pastBookings = [];
+let UpcomingBookings = [];
 
 // <--------------------> QUERY SELECTORS - BTN'S <--------------------> //
 const loginBtn = document.getElementById('submit-login-forms-button');
@@ -29,48 +30,66 @@ const mainHeader = document.getElementById('main-header');
 let usernameInput = document.getElementById('username-input');
 let passwordInput = document.getElementById('password-input');
 let errorMessage = document.getElementById("error-message");
+const savedBookingsWrapper = document.getElementById('saved-bookings-wrapper');
 
+const displayCustomerBookings = () => {
+  const customerBookings = getCustomerBookings(bookingsAPI, 10);
+  console.log(customerBookings);
+  savedBookingsWrapper.innerHTML = '';
 
-//<--------------------> LOGIN FUNCTIONS <--------------------> //
-const validateLogin = (username, password) => {
-  const usernameMatch = username.match(/\d+/);
-  if (usernameMatch) {
-    
-    const customerId = usernameMatch[0];
-    const customerName = username.replace(customerId, "");
-    const newUserName = customerName + customerId;
+  if (customerBookings.length > 0) {
+    customerBookings.forEach(booking => {
+      savedBookingsWrapper.innerHTML = `
+<container class="booking-card" role="article">
+  <div class="booking-card-image">
+    <img src="placeholder.jpg" alt="Room Image">
+  </div>
+  <div class="booking-card-content">
+    <p id="booking-room-number">Room Number: ${booking.roomNumber}</p>
+    <p id="booking-date">Date: ${booking.date}</p>
+  </div>
+</container>
+      `;
+    });
 
-    if (newUserName === `customer${customerId}` 
-      && password === "overlook2021") {
-      return customerId;
-    }
+  } else {
+    const noBookingsMessage = document.createElement('p');
+    noBookingsMessage.innerText = 'YOU HAVE NO BOOKINGS WITH US.';
+    savedBookingsWrapper.appendChild(noBookingsMessage);
   }
-  return null;
 };
 
-const loginHandler = (e) => {
+//<------------------------------> LOGIN <-----------------------------> //
+loginBtn.addEventListener('click', (e) => {
   e.preventDefault();
-
   const username = usernameInput.value;
   const password = passwordInput.value;
-  const customerId = validateLogin(username, password);
+  if (username === 'customer10' && password === 'overlook2021') {
 
-  if (customerId) {
     console.log("Login successful!");
     loginSection.style.display = 'none';
     mainSection.style.display = 'flex';
     mainHeader.style.display = 'flex';
-    fetchCustomerData(customerId);
+    // fetchCustomerData()
+
   } else {
-    errorMessage.innerText = "USERNAME OR PASSWORD IS INVALID.";
+    errorMessage.innerText = "INVALID USERNAME OR PASSWORD.";
     setTimeout(() => {
       errorMessage.textContent = "";
     }, 4000);
   }
-};
-loginBtn.addEventListener('click', loginHandler);
+  displayCustomerBookings();
+});
 
-//<--------------------> CUSTOMERS DISPLAY <--------------------> //
+
+
+
+// loginBtn.addEventListener('click', loginHandler);
+// loginBtn.addEventListener('click', loginHandler);
+// loginBtn.addEventListener('click', loginHandler);
+
+
+
 
 
 
