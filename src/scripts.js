@@ -88,13 +88,11 @@ const bookRoom = (roomNumber) => {
     with a ${room.bedSize} bed for $${room.costPerNight}?`);
   if (confirmation) {
     console.log('Attempting to book room...');
-    // Add your room booking logic here...
+    // room booking logic here...
     // 1. Make a post request to add the booking to the API
-    // 2A. Re-retrieve the data over the API for the user -> re-render 
+    // 2. Re-retrieve the data over the API for the user -> re-render 
     //     (Best practice, supports single source of truth)
-    //        or
-    // 2B. Trust your update, and just shove it into the filteredBookings 
-    //     array -> re-render (Hacky, but works)
+    
     alert('Your room was booked successfully!')
   } else {
     console.log('User declined booking.');
