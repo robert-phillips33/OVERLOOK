@@ -1,17 +1,19 @@
 
 export const getCustomerBookings = (bookings, customerId) => {
+  console.log(bookings)
   const customerBookings = bookings.filter((booking) => {
     return booking.userID === customerId;
   });
+  console.log('Number of indexes:', customerBookings.length)
   return customerBookings;
 };
 
 export const getSumOfAllBookings = (bookings, rooms, customerId) => {
   const customerBookings = bookings.filter(booking =>
     booking.userID === customerId);
-  
+
   let totalPrice = 0;
-  
+
   customerBookings.forEach(booking => {
     const thisRoom = rooms.find(room => room.number === booking.roomNumber);
     totalPrice += thisRoom.costPerNight;
