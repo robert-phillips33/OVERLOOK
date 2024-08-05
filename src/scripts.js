@@ -21,7 +21,7 @@ const {
 let allBookings = [];
 let allRooms = [];
 let customersAPIData = [];
-let roomsAPIData = [];
+// let roomsAPIData = [];
 let userID = 10;
 let date;
 
@@ -37,7 +37,7 @@ const loginSection = document.querySelector('.login-container');
 const mainHeader = document.getElementById('main-header');
 const savedBookingsWrapper = document.getElementById('saved-bookings-wrapper');
 const makeNewBookingWrapper =
-document.getElementById('make-new-booking-wrapper');
+  document.getElementById('make-new-booking-wrapper');
 let totalSpentDiv = document.getElementById('total-spent');
 
 // <--------------------> QUERY SELECTORS - FORMS <--------------------> //
@@ -47,18 +47,40 @@ let errorMessage = document.getElementById("error-message");
 
 
 // <---------------------------> FUNCTIONS <---------------------------> //
+
+makeNewBookingWrapper.addEventListener('click', (e) => {
+
+  e.preventDefault();
+  if (e.target.type === 'submit') {
+    let bookingRoomNumber = e.target.id;
+    console.log('Room to book', bookingRoomNumber);
+    bookRoom(bookingRoomNumber);
+  }
+  console.log(e.target.type);
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  fetchRoomData().then((data) => {
+    allRooms = data.rooms;
+    console.log('AAAAAALLLL ROOOOOMS:', allRooms);
+  })
+  // GET ALL OF THE BOOKINGS ({BOOKINGS: [{...}]})
+  fetchBookingData().then((data) => {
+    allBookings = data.bookings;
+  });
+});
+
 const getPostLoginData = () => {
   // GET DATA FOR THE SINGLE CUSTOMER, 10 ({...})
   customersAPIData = fetchCustomerData(userID);
   // GET ALL OF THE ROOMS ({ROOMS: [{...}]})
-  roomsAPIData = fetchRoomData();
-  // GET ALL OF THE BOOKINGS ({BOOKINGS: [{...}]})
-  fetchBookingData().then((data) => {
-    allBookings = data.bookings;
-    let filteredRooms = getCustomerBookings(data.bookings, userID)
-    // PASS THE FILTERED ROOM DATA INTO THE RENDER FUNCTION
-    renderCustomerRooms(filteredRooms);
-  });
+  // roomsAPIData = fetchRoomData();
+
+  let filteredRooms = getCustomerBookings(allBookings, userID)
+  // PASS THE FILTERED ROOM DATA INTO THE RENDER FUNCTION
+  renderCustomerRooms(filteredRooms);
+
 };
 
 // ADD EVENT LISTENERS AFTER CUSTOMER DATA IS RETRIEVED 
@@ -72,17 +94,17 @@ const setupEventListeners = () => {
     let roomTagsInputValue = roomTagsInput.value;
     console.log(date, roomTagsInputValue);
     // FILTER THE ROOMS BY THE SEARCH INPUTS
-    fetchRoomData().then((data) => {
-      allRooms = data.rooms;
-      let filteredRooms =
+    // fetchRoomData().then((data) => {
+    //   allRooms = data.rooms;
+    let filteredRooms =
       getAvailableRooms(date, allBookings, allRooms);
-      // FORMAT THE DATA TAG FROM 'DATA-NAME' TO 'DATA NAME'
-      roomTagsInput = roomTagsInputValue.split('-').join(' ');
-      let filteredRoomsByType = 
+    // FORMAT THE DATA TAG FROM 'DATA-NAME' TO 'DATA NAME'
+    roomTagsInput = roomTagsInputValue.split('-').join(' ');
+    let filteredRoomsByType =
       filterRoomsByType(filteredRooms, roomTagsInput);
-      // UPDATE THE MAKENEWBOOKINGS WRAPPER WITH THE ROOMS
-      renderAvailableRooms(filteredRoomsByType);
-    });
+    // UPDATE THE MAKENEWBOOKINGS WRAPPER WITH THE ROOMS
+    renderAvailableRooms(filteredRoomsByType);
+    // });
   });
 };
 
@@ -92,19 +114,19 @@ const bookRoom = (roomNumber) => {
   // FIND THE ROOM
   const room = allRooms.find((room) => room.number === parseInt(roomNumber));
   // CONFIRM WITH THE USER
-  const confirmation = 
-  confirm (`Do you want to book this 
-    ${room.roomType} for $${room.costPerNight}?`);
-  
+  const confirmation =
+    confirm(`Do you want to book this
+      ${room.roomType} for $${room.costPerNight}?`);
+
   if (confirmation) {
     console.log('Attempting to book room...');
 
     const newBooking = {
-      userID, 
-      date, 
+      userID,
+      date,
       roomNumber
     };
-    // "2022/01/30" -> 2022/01/30
+
     postBookingData(newBooking)
       .then(() => {
         // Re-fetch the booking data and re-render the UI (??)
@@ -115,7 +137,11 @@ const bookRoom = (roomNumber) => {
         const filteredRooms = getCustomerBookings(allBookings, userID);
         console.log('CUSTOMER ROOMS HERE:', filteredRooms);
         renderCustomerRooms(filteredRooms);
-        alert('Your room was booked successfully!');
+        // alert('Your room was booked successfully!');
+        const totalSpent = getSumOfAllBookings(allBookings, allRooms, userID);
+        totalSpentDiv.innerText =
+          `YOU HAVE SPENT A TOTAL OF 
+          $${totalSpent.toFixed(2)} ON YOUR BOOKINGS.`;
       })
       .catch(error => {
         console.error('Error booking room:', error);
@@ -155,12 +181,12 @@ const renderAvailableRooms = (filteredRooms) => {
   // CLOSE THE OUT CONTAINER
   outContainer += '</div>'
   makeNewBookingWrapper.innerHTML = outContainer;
-  makeNewBookingWrapper.addEventListener('click', (event) => {
-    event.preventDefault();
-    let bookingRoomNumber = event.target.id;
-    console.log('Room to book', bookingRoomNumber)
-    bookRoom(bookingRoomNumber)
-  });
+  // makeNewBookingWrapper.addEventListener('click', (event) => {
+  //   event.preventDefault();
+  //   let bookingRoomNumber = event.target.id;
+  //   console.log('Room to book', bookingRoomNumber);
+  //   bookRoom(bookingRoomNumber);
+  // });
 };
 
 const renderCustomerRooms = (filteredRooms) => {
@@ -184,10 +210,11 @@ const renderCustomerRooms = (filteredRooms) => {
 };
 
 const handleLoginSuccess = () => {
-  // LOGGING
-  console.log("Login successful!");
   // GET THE POST LOGIN DATA
   getPostLoginData();
+  const totalSpent = getSumOfAllBookings(allBookings, allRooms, userID);
+  totalSpentDiv.innerText =
+    `YOU HAVE SPENT A TOTAL OF $${totalSpent.toFixed(2)} ON YOUR BOOKINGS.`;
   // RENDER THE APP //
   loginSection.style.display = 'none';
   mainSection.style.display = 'flex';
