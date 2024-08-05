@@ -1,9 +1,7 @@
-export let customersAPI = [];
-export let roomsAPI = [];
-export let bookingsAPI = [];
-export let newBooking;
-
+// API Call Exports
 export const fetchCustomerData = () => {
+  // Declare container
+  let customersAPIdata = [];
   return fetch(`http://localhost:3001/api/v1/customers/10`)
     .then(response => {
       if (!response.ok) {
@@ -12,13 +10,21 @@ export const fetchCustomerData = () => {
       return response.json();
     })
     .then(data => {
-      customersAPI = data;
-      console.log('Customers:', customersAPI);
+      // Set the data to the container
+      customersAPIdata = data;
+      // Logging
+      console.log('Customer Data:', customersAPIdata);
+      // Return the container
+      // NOTE: The container is an object
+      // {...}
+      return customersAPIdata;
     })
     .catch(error => console.error('Error fetching customers:', error));
 };
 
 export const fetchRoomData = () => {
+  // Declare container
+  let roomsAPIdata = [];
   return fetch('http://localhost:3001/api/v1/rooms')
     .then(response => {
       if (!response.ok) {
@@ -27,13 +33,21 @@ export const fetchRoomData = () => {
       return response.json();
     })
     .then(data => {
-      roomsAPI = data;
-      console.log('Rooms:', roomsAPI);
+      // Set the data to the container
+      roomsAPIdata = data;
+      // Logging
+      console.log('Rooms:', roomsAPIdata);
+      // Return the container;
+      // NOTE: The container is an object, with the property 'rooms' as an array
+      // {rooms: [{...}]}
+      return roomsAPIdata;
     })
     .catch(error => console.error('Error fetching rooms:', error));
 };
 
 export const fetchBookingData = () => {
+  // Declare container
+  let bookingsAPIdata = [];
   return fetch('http://localhost:3001/api/v1/bookings')
     .then(response => {
       if (!response.ok) {
@@ -42,13 +56,21 @@ export const fetchBookingData = () => {
       return response.json();
     })
     .then(data => {
-      bookingsAPI = data;
-      console.log('Bookings:', bookingsAPI);
+      // Set the data to the container
+      bookingsAPIdata = data;
+      // Logging
+      console.log('Bookings:', bookingsAPIdata);
+      // Return the container
+      // NOTE: The container is an object, with the property 'rooms' as an array
+      // {bookings: [{...}]}
+      return bookingsAPIdata;
     })
     .catch(error => console.error('Error fetching bookings:', error));
 };
 
 export const postBookingData = (bookingData) => {
+  // Declare container
+  let newBooking;
   return fetch('http://localhost:3001/api/v1/bookings', {
     method: 'POST',
     headers: {
@@ -63,8 +85,12 @@ export const postBookingData = (bookingData) => {
       return response.json();
     })
     .then(data => {
+      // Set the data to the container
       newBooking = data;
+      // User Alert / Notification
       alert('Room Booked! Thank you!');
+      // Return the container
+      return newBooking;
     })
     .catch(error => console.error('Error posting booking:', error));
 };

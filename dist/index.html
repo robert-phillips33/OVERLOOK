@@ -10,34 +10,34 @@
 
 <body>
   <div class="login-container" style="display: all;">
-    <h1 class="login-h1" >OVERLOOK.</h1>
+    <h1 class="login-h1">OVERLOOK.</h1>
     <form id="login-form" aria-labelledby="login-form-heading">
       <label for="username">Username</label>
-      <input type="text" class="login-input" id="username-input" name="username" placeholder="Username" 
-      autocomplete="current-username" aria-required="true">
-      <label for="password">Password</label>
+      <input type="text" class="login-input" id="username-input" name="username" placeholder="Username"
+        autocomplete="current-username" aria-required="true" value="customer10">
+      <label for=" password">Password</label>
       <input type="password" class="login-input" id="password-input" aria-required="true" name="password"
-        placeholder="Password" autocomplete="current-password" aria-required="true">
+        placeholder="Password" autocomplete="current-password" aria-required="true" value="overlook2021">
       <button id="submit-login-forms-button" type="submit">Login</button>
       <p id="error-message" style="color: red;"></p>
     </form>
   </div>
 
   <main id="main-app">
-    <header id="main-header" style="display: none"> 
+    <header id="main-header" style="display: none">
       <h1>WELCOME TO OVERLOOK HOTEL.</h1>
     </header>
-    <section class="booking-section" style ="display: none;">
+    <section class="booking-section" style="display: none;">
       <form class="booking-column" id="make-new-booking-column">
         <h2>MAKE A NEW BOOKING.</h2>
         <nav id="make-new-booking-nav">
           <input type="date" id="calendar-input" class="booking-input" aria-required="true" required>
-          <select id="room-tags" id="new-booking-tags" class="booking-input" aria-required="true">
-            <option>room types</option>
-            <option>suite</option>
-            <option>junior suite</option>
-            <option>residential suite</option>
-            <option>single room</option>
+          <select id="room-tags" class="booking-input" aria-required="true">
+            <option value="all">all</option>
+            <option value="suite">suite</option>
+            <option value="junior-suite">junior suite</option>
+            <option value="residential-suite">residential suite</option>
+            <option value="single-room">single room</option>
           </select>
           <button id="search-bookings-button" type="submit" class="booking-button">SEARCH</button>
         </nav>
@@ -55,6 +55,7 @@
         </nav>
         <div class="booking-wrapper" id="saved-bookings-wrapper">
           <!-- USERS BOOKINGS COULD GENERATE HERE? -->
+          
         </div>
       </form>
     </section>
