@@ -21,9 +21,9 @@ const {
 let allBookings = [];
 let allRooms = [];
 let customersAPIData = [];
-// let roomsAPIData = [];
 let userID = 10;
 let date;
+
 
 // <--------------------> QUERY SELECTORS - BTN'S <--------------------> //
 const loginBtn = document.getElementById('submit-login-forms-button');
@@ -37,7 +37,7 @@ const loginSection = document.querySelector('.login-container');
 const mainHeader = document.getElementById('main-header');
 const savedBookingsWrapper = document.getElementById('saved-bookings-wrapper');
 const makeNewBookingWrapper =
-  document.getElementById('make-new-booking-wrapper');
+document.getElementById('make-new-booking-wrapper');
 let totalSpentDiv = document.getElementById('total-spent');
 
 // <--------------------> QUERY SELECTORS - FORMS <--------------------> //
@@ -56,31 +56,27 @@ makeNewBookingWrapper.addEventListener('click', (e) => {
     console.log('Room to book', bookingRoomNumber);
     bookRoom(bookingRoomNumber);
   }
-  console.log(e.target.type);
 });
 
-
+// LOAD REQUIRED DATA ON DOM LOAD
 document.addEventListener('DOMContentLoaded', () => {
   fetchRoomData().then((data) => {
     allRooms = data.rooms;
-    console.log('AAAAAALLLL ROOOOOMS:', allRooms);
-  })
-  // GET ALL OF THE BOOKINGS ({BOOKINGS: [{...}]})
+  });
+  // GET ALL OF THE BOOKINGS
   fetchBookingData().then((data) => {
     allBookings = data.bookings;
   });
 });
 
 const getPostLoginData = () => {
-  // GET DATA FOR THE SINGLE CUSTOMER, 10 ({...})
+  // GET DATA FOR THE CUSTOMER
   customersAPIData = fetchCustomerData(userID);
   // GET ALL OF THE ROOMS ({ROOMS: [{...}]})
-  // roomsAPIData = fetchRoomData();
 
   let filteredRooms = getCustomerBookings(allBookings, userID)
   // PASS THE FILTERED ROOM DATA INTO THE RENDER FUNCTION
   renderCustomerRooms(filteredRooms);
-
 };
 
 // ADD EVENT LISTENERS AFTER CUSTOMER DATA IS RETRIEVED 
@@ -94,8 +90,6 @@ const setupEventListeners = () => {
     let roomTagsInputValue = roomTagsInput.value;
     console.log(date, roomTagsInputValue);
     // FILTER THE ROOMS BY THE SEARCH INPUTS
-    // fetchRoomData().then((data) => {
-    //   allRooms = data.rooms;
     let filteredRooms =
       getAvailableRooms(date, allBookings, allRooms);
     // FORMAT THE DATA TAG FROM 'DATA-NAME' TO 'DATA NAME'
@@ -104,8 +98,35 @@ const setupEventListeners = () => {
       filterRoomsByType(filteredRooms, roomTagsInput);
     // UPDATE THE MAKENEWBOOKINGS WRAPPER WITH THE ROOMS
     renderAvailableRooms(filteredRoomsByType);
-    // });
   });
+  
+  pastBookingsBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    console.log('Past bookings button clicked');
+    filterBookingsByDate('past');
+  });
+
+  upcomingBookingsBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    console.log('Upcoming bookings button clicked');
+    filterBookingsByDate('upcoming');
+  });
+};
+
+const filterBookingsByDate = (type) => {
+  const today = new Date();
+  let filteredBookings = [];
+
+  if (type === 'past') {
+    filteredBookings = allBookings.filter(booking => 
+      booking.userID === userID && 
+      new Date(booking.date) < today);
+  } else if (type === 'upcoming') {
+    filteredBookings = allBookings.filter(booking => 
+      booking.userID === userID &&
+      new Date(booking.date) >= today);
+  }
+  renderCustomerRooms(filteredBookings);
 };
 
 const bookRoom = (roomNumber) => {
@@ -157,7 +178,7 @@ const renderAvailableRooms = (filteredRooms) => {
   // OPEN CONTAINER FOR NEW ROOMS
   let outContainer = `<div class="booking-tiles">`;
 
-  // GENERATE NEW HTML (( USING FOR OF >:D ))
+  // GENERATE NEW HTML
   for (let room of filteredRooms) {
     outContainer += `<container class="booking-card" role="article">
       <div class="booking-card-image">
@@ -177,16 +198,8 @@ const renderAvailableRooms = (filteredRooms) => {
     outContainer +=
       '<div>NO ROOMS AVAILABLE MATCHING YOUR INPUT, WE ARE SORRY!</div>'
   }
-
-  // CLOSE THE OUT CONTAINER
   outContainer += '</div>'
   makeNewBookingWrapper.innerHTML = outContainer;
-  // makeNewBookingWrapper.addEventListener('click', (event) => {
-  //   event.preventDefault();
-  //   let bookingRoomNumber = event.target.id;
-  //   console.log('Room to book', bookingRoomNumber);
-  //   bookRoom(bookingRoomNumber);
-  // });
 };
 
 const renderCustomerRooms = (filteredRooms) => {
@@ -196,11 +209,11 @@ const renderCustomerRooms = (filteredRooms) => {
   for (let room of filteredRooms) {
     outContainer += `<container class="booking-card" role="article">
       <div class="booking-card-image">
-        <img src="./images/bed.svg" alt="turing logo">
+        <img src="./images/bed.svg" alt="minimalist-hotel-bed-image">
       </div>
       <div class="booking-card-content">
-        <p id="booking-room-number">Room Number: ${room.roomNumber}</p>
-        <p id="booking-date">Date: ${room.date}</p>
+        <p id="booking-room-number">ROOM NUMBER: ${room.roomNumber}</p>
+        <p id="booking-date">DATE: ${room.date}</p>
       </div>
     </container>`
   }
@@ -244,5 +257,5 @@ const handleLogin = () => {
   });
 };
 
-// INITIALIZE THE APPLICATION BABY!
+// INITIALIZE THE APPLICATION!
 handleLogin();
