@@ -69,7 +69,8 @@ export const fetchBookingData = () => {
 };
 
 export const postBookingData = (bookingData) => {
-  // Declare container
+  bookingData.date = bookingData.date.replaceAll('-', '/');
+  console.log(bookingData);
   let newBooking;
   return fetch('http://localhost:3001/api/v1/bookings', {
     method: 'POST',
