@@ -2,7 +2,7 @@
 export const fetchCustomerData = () => {
   // Declare container
   let customersAPIdata = [];
-  return fetch(`http://localhost:3001/api/v1/customers/10`)
+  return fetch(`http://localhost:3001/api/v1/customers/11`)
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response failed.');
@@ -15,7 +15,7 @@ export const fetchCustomerData = () => {
       // Logging
       console.log('Customer Data:', customersAPIdata);
       // Return the container
-      // NOTE: The container is an object
+      // NOTE: container is an object, with the property 'customers' as an array
       // {...}
       return customersAPIdata;
     })
@@ -38,7 +38,7 @@ export const fetchRoomData = () => {
       // Logging
       console.log('Rooms:', roomsAPIdata);
       // Return the container;
-      // NOTE: The container is an object, with the property 'rooms' as an array
+      // NOTE: container is an object, with the property 'rooms' as an array
       // {rooms: [{...}]}
       return roomsAPIdata;
     })
@@ -61,7 +61,7 @@ export const fetchBookingData = () => {
       // Logging
       console.log('Bookings:', bookingsAPIdata);
       // Return the container
-      // NOTE: The container is an object, with the property 'rooms' as an array
+      // NOTE: container is an object, with the property 'bookings' as an array
       // {bookings: [{...}]}
       return bookingsAPIdata;
     })

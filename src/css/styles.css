@@ -5,8 +5,6 @@ body {
   color: black;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
-  /* figure this out later */
   height: 100vh;
   margin: 0;
   padding: 20px;
@@ -24,16 +22,14 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 3px solid black;
 }
 
 h1 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
   color: black;
-}
-
-h1 {
-  border: 3px double #333;
+  border: 8px double #333;
   padding: 10px;
 }
 
@@ -45,7 +41,7 @@ form {
 
 label {
   margin-top: 1rem;
-  text-align: left;
+  text-align: center;
   width: 100%;
 }
 
@@ -55,7 +51,7 @@ label {
   font-size: 1rem;
   border: 2px solid black;
   border-radius: 4px;
-  width: 100%;
+  width: 95%;
 }
 
 
@@ -88,19 +84,19 @@ button:hover {
 .booking-card {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-bottom: 10px;
-  border: 2px solid black;
+  border: 3.5px solid black;
   padding: 20px;
   border-radius: 5px;
-  text-align: right;
+  text-align: center;
+  font-size: 20px;
 }
 
-/* 
-.booking-card:hover{
-  background-color: rgba(0,0,0, 0.1);
-  cursor: pointer;
-} */
+
+.booking-card:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
 
 header {
   text-align: center;
@@ -110,7 +106,6 @@ header {
 .booking-section {
   display: flex;
   flex-wrap: wrap;
-  /* Allow columns to wrap when necessary */
   justify-content: space-between;
   width: 100%;
   gap: 2rem;
@@ -118,15 +113,20 @@ header {
 
 .booking-column {
   flex: 1 1 45%;
-  /* Allow flexibility and ensure both columns take up equal space */
   min-width: 300px;
-  /* Set a minimum width to avoid being too small */
   padding: 1rem;
-  border: 2px solid black;
   border-radius: 8px;
   background: white;
   text-align: center;
   box-sizing: border-box;
+}
+
+.top-section {
+  border: 2px solid black;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: white;
 }
 
 .booking-column h2 {
@@ -151,9 +151,7 @@ nav {
   flex-direction: column;
   align-items: start;
   gap: 1rem;
-  /* Consistent gap */
   width: 100%;
-  /* Full width of the container */
 }
 
 .booking-input,
@@ -165,9 +163,17 @@ nav {
   width: 100%;
 }
 
+#submit-login-forms-button {
+  max-width: 100%;
+}
+
+#upcoming-bookings-button {
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
 .booking-wrapper {
-  margin-top: 1rem;
-  border: 2px solid black;
+  border: 2.5px solid black;
   border-radius: 4px;
   padding: 1rem;
   min-height: 350px;
@@ -175,5 +181,6 @@ nav {
 }
 
 #make-new-booking-wrapper {
-  margin-top: 32px;
+  margin-top: 16px;
+  height: auto;
 }
