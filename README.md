@@ -1,165 +1,58 @@
-# Webpack Starter Kit
+<div align="center">
 
-## Fork + Clone This Repo
+# _OVERLOOK_
 
-1. Fork this repo.
-2. Clone AND RENAME this repo with `git clone [remote-address] [what you want to name the repo]`. For example: 
-```bash
-git clone git@github.com:turingschool-examples/webpack-starter-kit.git overlook-hotel
-```
-3. `cd` into your new directory.
-4. Install the library dependencies with `npm install`.
-5. To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see a page with the Turing logo image and a beautiful gradient background. If that's the case, you're good to go. Enter `control + c` in your terminal to stop the server at any time.
+## Overview
 
-## Where to Add Your Code
+With three months of experience as a developer, I built this application in the final week of Mod 2 at Turing School of Software Design. OVERLOOK was a solo project without any other contributors. From wireframe to final commit, I spent around 30 hours total developing the application.
 
-### JavaScript
+OVERLOOK is a lightweight, minimalist application that allows its users to book hotel rooms based on their provided date and room type criteria. Users are also capable of viewing their previously booked and upcoming rooms in separate sections, their total spent on bookings is dynamically updated/displayed as the sum of both.
 
-You have to be very intentional with where you add your feature code. This repo uses a tool called [webpack](https://webpack.js.org/) to combine many JavaScript files into one big file. Webpack enables you to have many, separate JavaScript files to keep your code organized and readable. Webpack expects all of your code files to be in a specific place, or else it doesn't know how to combine them all behind the scenes.
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![Mocha](https://img.shields.io/badge/-mocha-%238D6748?style=for-the-badge&logo=mocha&logoColor=white)
+![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black) ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
-**Create all of your feature code files in the `src` directory.**
+## Challenges && Wins
 
-Since code is separated into multiple files, you need to use the `import` and `export` syntax to share code across file.
+__Network Requests__
 
-Here is a video that walks through some information about [import and export](https://www.youtube.com/watch?v=_3oSWwapPKQ). There are a lot of resources out there about `import` and `export`, and resources will sometimes call them `ES6 modules`. It's something you will see in React and beyond.
+Given that OVERLOOK was my second project experience handling network requests, navigating both FETCH and POST requests took some time. After being defeated by my code quite a few times, my understanding of FETCH/POST requests began to grow with each instance of my refactors producing functionality.
 
-### HTML
+__TDD__
 
-Add the HTML you need in the `index.html` file in the `./dist` directory. There is some boilerplate HTML that exists from the start that you can modify.
+Using Mocha & Chai for TDD has been a part of my toolkit for five weeks now, and after a bit of growing pains, I began to feel really good about the tests that accompanied my logic functions during the course of this project. It was difficult to understand a bit earlier on in my development journey, but as further pieces came into play within my projects (cough cough, network requests).. Being able to __for sure__ know that the functions handling the foundations of my application are tested and working, without a doubt saved me a lot of time in my development process. 
 
-### Images
+## Features
 
-Add your image files in the `src/images` directory. Similar to CSS files, you need to `import` image files in the JavaScript entry file (`scripts.js`). Then go into the HTML and add an `img` element with the `src` attribute pointing to the `images` directory. There is an example in the `index.html` file for you to see.
+**User Authentication**: Secure login for users.  
+**New Booking**: Make new reservations by selecting a date and room type.  
+**View All Bookings**: View previous and upcoming bookings in separate sections.  
+**Get Sum of All Bookings**: View your grand total, getting the sum of all of your previous and upcoming bookings.  
+**Accessibility**: ARIA labels and attributes ensure the application is fully accessible to all users. 
 
-## How to View Your Code in Action
+## Screenshots
 
-In the terminal, run:
+<p align="center">
+  <a href="https://ibb.co/txqGGH8"><img src="https://i.ibb.co/9VbDDps/Screenshot-2024-08-06-at-6-50-21-PM.png" alt="overlook application login form screenshot" border="0" width="300"></a>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://ibb.co/yp0mCpk"><img src="https://i.ibb.co/9hnm0h4/Screenshot-2024-08-06-at-6-51-10-PM.png" alt="overlook application screenshot" border="0" width="650"></a>
+</p>
 
-```bash
-npm start
-```
+## Installation & Setup
 
-You will see a bunch of lines output to your terminal. One of those lines will be something like:
+Running this application requires:
 
-```bash
-Project is running at http://localhost:8080/
-```
+Git - version control software you can [install here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+NPM - package manager that is [part of Node.js](https://nodejs.org/en)
 
-Go to `http://localhost:8080/` in your browser to view your code running in the browser.
+Follow the instructions in [this repo]((https://github.com/turingschool-examples/overlook-api)) to pull down and get the backend API server running.
+Pull down the code for the frontend website
 
----
+git clone `git@github.com:robert-phillips33/OVERLOOK.git`
 
-## Test Files Organization
+Install required node packages - `npm install `
 
-Similar to feature code, your test code needs to be put in a specific place for it to run successfully.
+Start the frontend dev server - `npm run start`
 
-**Put all of your test files in the `test` directory.** As a convention, all test filenames should end with `-test.js`. For instance: `box-test.js`.
-
-## Running Your Tests
-
-Run your test suite using the command:
-
-```bash
-npm test
-```
-
-The test results will output to the terminal.
-
----
-
-## Linting Your Code
-
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit - the linter is still running successfully.
-
-Your linter will look at the JavaScript files you have within the `src` directory and the `test` directory.
-
-## Webpack?
-
-If you look in the `package.json` file, you'll see one of the library dependencies called `webpack`. If you're interested in learning more about what Webpack is and how it works behind the scenes, take a look through the [Webpack configuration documentation](https://webpack.js.org/concepts/).
-
-## Deploying to GitHub Pages
-
-_If you are finished with the functionality and testing of your project_, then you can consider deploying your project to the web! This way anyone can play it without cloning down your repo.
-
-[GitHub Pages](https://pages.github.com/) is a great way to deploy your project to the web. Don't worry about this until your project is free of bugs and well tested!
-
-If you _are_ done, you can follow [this procedure](./gh-pages-procedure.md) to get your project live on GitHub Pages.
-
----
-## Installing Typescript (*Extension Only*)
-1. Install `typescript` and `ts-loader`:
-```
-npm i -D typescript ts-loader
-```
-
-2. Create a `tsconfig.json` file in the root directory
-```
-touch tsconfig.json
-```
-
-3. Add the following to the `tsconfig.json` file:
-```js
-{
-  "compilerOptions": {
-    "outDir": "./dist/",
-    "noImplicitAny": true,
-    "module": "es6",
-    "target": "es5",
-    "allowJs": true,
-    "moduleResolution": "node"
-  }
-}
-```
-
-4. In your webpack.config.js file, update it to be:
-```js
-const path = require('path');
-module.exports = {
-  "mode": "none",
-  "entry": "./src/scripts.ts",
-  "output": {
-    "path": __dirname + '/dist',
-    "filename": "bundle.js",
-  },
-  devServer: {
-    static: {
-      directory: path.join(__dirname, 'dist')
-    }
-  },
-  "devtool": "source-map",
-  // CSS and file (image) loaders
-  "module": {
-    "rules": [
-      {
-        test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.(png|svg|jpg|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'images/',
-              publicPath: 'images/'
-            }
-          }
-        ]
-      },
-      {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-      }
-    ]
-  },
-  resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
-  },
-};
-```
-
-5. Update all `.js` files to be `.ts` including `scripts.ts`.
-
-6. From here, you should now get some TypeScript errors when running `npm start` that you can begin working through.
