@@ -35,7 +35,7 @@ Using Mocha & Chai for TDD has been a part of my toolkit for five weeks now, and
 ## Screenshots
 
 <p align="center">
-  <a href="https://ibb.co/txqGGH8"><img src="https://i.ibb.co/9VbDDps/Screenshot-2024-08-06-at-6-50-21-PM.png" alt="overlook application login form screenshot" border="0" width="300"></a>
+  <a href="https://ibb.co/txqGGH8"><img src="https://i.ibb.co/9VbDDps/Screenshot-2024-08-06-at-6-50-21-PM.png" alt="overlook application login form screenshot" border="0" width="150"></a>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <a href="https://ibb.co/yp0mCpk"><img src="https://i.ibb.co/9hnm0h4/Screenshot-2024-08-06-at-6-51-10-PM.png" alt="overlook application screenshot" border="0" width="650"></a>
 </p>
