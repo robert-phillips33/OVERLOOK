@@ -10,14 +10,14 @@
 
 <body>
   <div class="login-container" style="display: all;">
-    <h1 class="login-h1">OVERLOOK.</h1>
+    <h1 class="login-h1" id="login-form-heading">OVERLOOK.</h1>
     <form id="login-form" aria-labelledby="login-form-heading">
-      <label for="username">Username</label>
+      <label for="username-input">Username</label>
       <input type="text" class="login-input" id="username-input" name="username" placeholder="Username"
-        autocomplete="current-username" aria-required="true" value="customer10">
-      <label for=" password">Password</label>
-      <input type="password" class="login-input" id="password-input" aria-required="true" name="password"
-        placeholder="Password" autocomplete="current-password" aria-required="true" value="overlook2021">
+        autocomplete="current-username" aria-required="true" required value="customer11">
+      <label for="password-input">Password</label>
+      <input type="password" class="login-input" id="password-input" name="password" placeholder="Password"
+        autocomplete="current-password" aria-required="true" required value="overlook2021">
       <button id="submit-login-forms-button" type="submit">Login</button>
       <p id="error-message" style="color: red;"></p>
     </form>
@@ -31,8 +31,10 @@
       <form class="booking-column" id="make-new-booking-column">
         <h2>MAKE A NEW BOOKING.</h2>
         <nav id="make-new-booking-nav">
+          <label for="calendar-input" class="dropdown-label">SELECT BOOKING DATE</label>
           <input type="date" id="calendar-input" class="booking-input" aria-required="true" required>
-          <select id="room-tags" class="booking-input" aria-required="true">
+          <label for="room-tags" class="dropdown-label">SELECT ROOM TYPE</label>
+          <select id="room-tags" class="booking-input" aria-required="true" required>
             <option value="all">all</option>
             <option value="suite">suite</option>
             <option value="junior-suite">junior suite</option>
@@ -42,7 +44,7 @@
           <button id="search-bookings-button" type="submit" class="booking-button">SEARCH</button>
         </nav>
         <div class="booking-wrapper" id="make-new-booking-wrapper">
-          <!-- AVAILABLE ROOMS COULD GENERATE HERE(?) -->
+          <!-- AVAILABLE ROOMS GENERATE  -->
         </div>
       </form>
 
@@ -54,7 +56,7 @@
           <button id="upcoming-bookings-button" class="booking-button">VIEW UPCOMING BOOKINGS</button>
         </nav>
         <div class="booking-wrapper" id="saved-bookings-wrapper">
-          <!-- USERS BOOKINGS COULD GENERATE HERE? -->
+          <!-- USERS BOOKINGS GENERATE HERE -->
 
         </div>
       </form>

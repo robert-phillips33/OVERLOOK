@@ -12,7 +12,6 @@ const {
 
 const { bookings } = require('./data/sample-bookings.js');
 const { rooms } = require('./data/sample-rooms.js');
-// const { customers } = require('./data/sample-customers.js');
 
 describe('getCustomerBookings', () => {
   it('should be a function', () => {

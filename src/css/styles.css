@@ -5,8 +5,6 @@ body {
   color: black;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
-  /* figure this out later */
   height: 100vh;
   margin: 0;
   padding: 20px;
@@ -31,9 +29,6 @@ h1 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
   color: black;
-}
-
-h1 {
   border: 8px double #333;
   padding: 10px;
 }
@@ -46,7 +41,7 @@ form {
 
 label {
   margin-top: 1rem;
-  text-align: left;
+  text-align: center;
   width: 100%;
 }
 
@@ -99,8 +94,8 @@ button:hover {
 }
 
 
-.booking-card:hover{
-  background-color: rgba(0,0,0, 0.1);
+.booking-card:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 header {
@@ -111,21 +106,14 @@ header {
 .booking-section {
   display: flex;
   flex-wrap: wrap;
-  /* Allow columns to wrap when necessary */
   justify-content: space-between;
   width: 100%;
   gap: 2rem;
 }
 
-#saved-bookings-column {
-  margin-top: 45px;
-}
-
 .booking-column {
   flex: 1 1 45%;
-  /* Allow flexibility and ensure both columns take up equal space */
   min-width: 300px;
-  /* Set a minimum width to avoid being too small */
   padding: 1rem;
   border-radius: 8px;
   background: white;
@@ -163,9 +151,7 @@ nav {
   flex-direction: column;
   align-items: start;
   gap: 1rem;
-  /* Consistent gap */
   width: 100%;
-  /* Full width of the container */
 }
 
 .booking-input,
@@ -198,4 +184,3 @@ nav {
   margin-top: 16px;
   height: auto;
 }
-
