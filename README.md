@@ -4,7 +4,7 @@
 
 ## Overview
 
-With three months of experience as a developer, I built this application in the final week of Mod 2 at Turing School of Software Design. OVERLOOK was a solo project without any other contributors. From wireframe to final commit, I spent around 30 hours total developing the application.
+With three months of experience as a developer, I built this application in the final week of Mod 2 at Turing School of Software and Design. OVERLOOK was a solo project without any other contributors. From wireframe to final commit, I spent around 30 hours total developing the application. This application was built through TDD and utilizes vanilla JavaScript, HTML5, CSS as well as Mocha // Chai testing.
 
 OVERLOOK is a lightweight, minimalist application that allows its users to book hotel rooms based on their provided date and room type criteria. Users are also capable of viewing their previously booked and upcoming rooms in separate sections, their total spent on bookings is dynamically updated/displayed as the sum of both.
 
@@ -18,11 +18,11 @@ OVERLOOK is a lightweight, minimalist application that allows its users to book 
 
 __Network Requests__
 
-Given that OVERLOOK was my second project experience handling network requests, navigating both FETCH and POST requests took some time. After being defeated by my code quite a few times, my understanding of FETCH/POST requests began to grow with each instance of my refactors producing functionality.
+Given that OVERLOOK was my second project experience handling network requests, navigating both FETCH and POST requests took some time. After being defeated by my code quite a few times, my understanding of FETCH/POST requests began to grow with each instance of my refactors producing functionality. The concept of "data model first" was very much nailed in for me after I had seen the results of using a POST request, chained into a FETCH in order to maintain truth within my data model. It was super satisfying seeing my data model correctly reflect user interactions when a user booked rooms. On top of that, updating the DOM as a result of the new and "true" FETCH'ed data made this application feel very solid.
 
 __TDD__
 
-Using Mocha & Chai for TDD has been a part of my toolkit for five weeks now, and after a bit of growing pains, I began to feel really good about the tests that accompanied my logic functions during the course of this project. It was difficult to understand a bit earlier on in my development journey, but as further pieces came into play within my projects (cough cough, network requests).. Being able to __for sure__ know that the functions handling the foundations of my application are tested and working, without a doubt saved me a lot of time in my development process. 
+Using Mocha & Chai for TDD has been a part of my toolkit for five weeks now, and after a bit of growing pains, I began to feel really good about the tests that accompanied my logic functions during the course of this project. It was difficult to understand a bit earlier on in my junior dev journey, but as further pieces came into play within my projects (cough cough, network requests).. Being able to __for sure__ know that the functions handling the foundations of my application are tested and working, without a doubt saved me a lot of time in my development process. 
 
 ## Features
 
